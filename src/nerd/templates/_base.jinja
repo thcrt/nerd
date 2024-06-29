@@ -1,0 +1,29 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1"
+        />
+
+        <title>nerd</title>
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tailwind.css') }}">
+    </head>
+    <body>
+        <header>
+            
+        </header>
+
+        <main>
+            {% block content %}
+            {% endblock content %}
+        </main>
+
+        <footer>
+            © 2024 Theo Court
+        </footer>
+    </body>
+</html>
