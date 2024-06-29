@@ -1,7 +1,7 @@
 [project]
-name = "nerd"
+name = "nerD"
 version = "0.1.0"
-description = "A frontend for the Hetzner DNS API (hetzNERDns)."
+description = "nerD, the HetznerDNSmanager. A frontend for the Hetzner DNS API."
 authors = [
     { name = "thcrt", email = "110127860+thcrt@users.noreply.github.com" }
 ]

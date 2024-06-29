@@ -1,3 +1,3 @@
-# nerd
+# nerD
 
-A frontend for the Hetzner DNS API (hetzNERDns).
+nerD, the HetznerDNSmanager. A frontend for the Hetzner DNS API.
