@@ -1,0 +1,118 @@
+{% extends "_base.jinja" %}
+{% block header_insert %}
+    <a href="/" class="my-auto mx-auto inline-block text-lg select-none font-bold hover:underline focus-within:underline max-md:order-3 max-smd:pt-2 text-red-600 bg-white rounded-md py-1 px-3">
+        ↩&#xFE0E; Back to the zone list
+    </a>
+{% endblock header_insert %}
+{% block content %}
+    <main class="px-5 py-5 bg-slate-50 flex flex-col h-full gap-4">
+        <div class="bg-slate-100 shadow-md shadow-slate-300 p-4 border-b-4 border-red-600 col-span-2 flex justify-between h-fit">
+            <div>
+                <h2 class="font-mono text-3xl">
+                    example.com
+                </h2>
+                <span class="uppercase font-light select-none">
+                    Zone name
+                </span>
+            </div>
+            <span class="text-6xl block my-auto opacity-10 cursor-default select-none max-sm:hidden">
+                Records
+            </span>
+        </div>
+        <div class="flex flex-row h-full gap-4 max-md:flex-col">
+            <div class="bg-slate-100 shadow-md shadow-slate-300 w-full grid grid-cols-[auto_1fr_2fr_auto] place-content-start">
+                <div class="grid grid-cols-subgrid col-span-full gap-2 p-2 bg-red-600 font-bold text-white">
+                    <span>
+                        Type
+                    </span>
+                    <span>
+                        Name
+                    </span>
+                    <span>
+                        Value
+                    </span>
+                    <span class="text-right">
+                        TTL
+                    </span>
+                </div>
+                <div class="grid grid-cols-subgrid col-span-full gap-2 p-2 border-b">
+                    <span>
+                        A
+                    </span>
+                    <span>
+                        @
+                    </span>
+                    <span>
+                        123.456.78.90
+                    </span>
+                    <span class="text-right">
+                        3600
+                    </span>
+                </div>
+                <div class="grid grid-cols-subgrid col-span-full gap-2 p-2 border-b">
+                    <span>
+                        A
+                    </span>
+                    <span>
+                        www
+                    </span>
+                    <span>
+                        123.456.78.90
+                    </span>
+                    <span class="text-right">
+                        3600
+                    </span>
+                </div>
+                <div class="grid grid-cols-subgrid col-span-full gap-2 p-2 border-b">
+                    <span>
+                        A
+                    </span>
+                    <span>
+                        foo
+                    </span>
+                    <span>
+                        69.420.13.12
+                    </span>
+                    <span class="text-right">
+                        3600
+                    </span>
+                </div>
+                <div class="grid grid-cols-subgrid col-span-full gap-2 p-2 border-b">
+                    <span>
+                        A
+                    </span>
+                    <span>
+                        bar
+                    </span>
+                    <span>
+                        11.22.33.44
+                    </span>
+                    <span class="text-right">
+                        3600
+                    </span>
+                </div>
+            </div>
+            <div class="bg-slate-100 shadow-md shadow-slate-300 p-4 w-full max-w-80 max-md:max-w-full flex flex-col gap-4">
+                <div class="text-xl text-center border-b border-b-slate-300 pb-2">
+                    Manage zone
+                </div>
+                <button type="button" class="p-2 rounded-md border outline-red-600 transition
+                    border-red-600 hover:border-white focus-within:border-white
+                    hover:bg-red-600 focus-within:bg-red-600
+                    text-red-600 hover:text-white focus-within:text-white
+                    hover:outline focus-within:outline
+                    hover:underline focus-within:underline">
+                    Delete zone
+                </button>
+                <button type="button" class="p-2 rounded-md border outline-blue-600 transition
+                    border-blue-600 hover:border-white focus-within:border-white
+                    hover:bg-slate-200 focus-within:bg-slate-200
+                    text-blue-600
+                    hover:outline focus-within:outline
+                    hover:underline focus-within:underline">
+                    View at Hetzner
+                </button>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

@@ -8,22 +8,34 @@
                 content="width=device-width, initial-scale=1"
         />
 
-        <title>nerd</title>
+        <title>nerD</title>
 
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tailwind.css') }}">
     </head>
-    <body>
-        <header>
-            
+    <body class="flex flex-col h-dvh">
+        <header class="bg-red-600 text-white p-2 flex flex-wrap justify-between">
+            <a href="/" class="text-3xl font-bold group select-none">
+                <img class="max-sm:hidden group-hover:opacity-0 transition-all group-hover:transition-all absolute left-4" width="40" src="{{ url_for('static', filename='logo.svg') }}">
+                <span class="opacity-0 group-hover:opacity-50 max-sm:hidden transition-all group-hover:transition-all">Hetz</span><span class="">nerD</span><span class="transition-all max-sm:hidden group-hover:transition-all opacity-0 group-hover:opacity-50">NSmanager</span>
+            </a>
+            {% block header_insert %}
+            {% endblock header_insert %}
+            <div>
+                <form class=" bg-white text-black text-xs overflow-hidden rounded-md focus-within:outline outline-2 py-1 px-2 outline-gray-300">
+                    <input id="key" size="32" type="password" class="font-mono focus:outline-none" autocomplete="off">
+                    <p class="flex justify-between select-none">
+                        <label for="key" class="font-bold">
+                            API key
+                        </label>
+                        <a target="_blank" href="https://dns.hetzner.com/settings/api-token" class="text-blue-700 hover:underline focus-within:underline">
+                            (get one here)
+                        </a>
+                    </p>
+                </form>
+            </div>
         </header>
 
-        <main>
-            {% block content %}
-            {% endblock content %}
-        </main>
-
-        <footer>
-            © 2024 Theo Court
-        </footer>
+        {% block content %}
+        {% endblock content %}
     </body>
 </html>
