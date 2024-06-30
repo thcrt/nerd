@@ -1,12 +1,13 @@
 import { request } from "./api.js";
 import { record_template } from "./templates.js"
 
-const records_container = document.getElementById("records");
-const zone_name_container = document.getElementById("zone-name");
-const hetzner_button = document.getElementById('hetzner-button');
-const id = new URL(document.location).searchParams.get('id');
 
 async function show_zone() {
+    const records_container = document.getElementById("records");
+    const zone_name_container = document.getElementById("zone-name");
+    const hetzner_button = document.getElementById('hetzner-button');
+    const id = new URL(document.location).searchParams.get('id');
+
     records_container.innerHTML = '';
     zone_name_container.innerHTML = '';
 
@@ -30,4 +31,10 @@ document.getElementById('refresh').addEventListener('click', () => {
     show_zone();
 })
 
+document.getElementById('delete-button').addEventListener('click', () => {
+    alert(`Hey!
+        
+This webapp is made for a uni assignment, and it's probably buggy in a million ways. Using it to delete anything is a VERY BAD IDEA!
 
+Also, you're probably my examiner, in which case I gave you my own API key to test this thing out. Not cool, man!`);
+})
