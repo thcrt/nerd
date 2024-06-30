@@ -1,6 +1,6 @@
 {% extends "_base.jinja" %}
 {% block header_insert %}
-    <a href="/" class="my-auto mx-auto inline-block text-lg select-none font-bold hover:underline focus-within:underline max-md:order-3 max-smd:pt-2 text-red-600 bg-white rounded-md py-1 px-3">
+    <a href="/" class="my-auto mx-auto inline-block text-lg select-none font-bold hover:underline focus-within:underline max-md:hidden text-red-600 bg-white rounded-md py-1 px-3">
         ↩&#xFE0E; Back to the zone list
     </a>
 {% endblock header_insert %}
@@ -14,7 +14,7 @@
                     Zone name
                 </span>
             </div>
-            <span class="text-6xl block my-auto opacity-10 cursor-default select-none max-sm:hidden">
+            <span class="text-6xl block my-auto opacity-10 cursor-default select-none max-md:hidden">
                 Records
             </span>
         </div>
