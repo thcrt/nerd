@@ -13,35 +13,54 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tailwind.css') }}">
     </head>
     <body class="flex flex-col h-dvh">
-        <header class="bg-red-600 text-white p-2 flex flex-wrap justify-between">
-            <a href="/" class="text-3xl font-bold group select-none">
-                <img class="max-md:hidden group-hover:opacity-0 transition-all group-hover:transition-all absolute left-4" width="40" src="{{ url_for('static', filename='logo.svg') }}">
+        <header class="bg-red-600 text-white flex flex-wrap justify-between">
+            <a href="/" class="text-3xl font-bold group select-none p-2">
+                <img class="max-md:hidden group-hover:opacity-0 transition-all group-hover:transition-all absolute left-5" width="35" src="{{ url_for('static', filename='logo.svg') }}">
                 <span class="opacity-0 group-hover:opacity-50 max-md:hidden transition-all group-hover:transition-all">Hetz</span><span class="">nerD</span><span class="transition-all max-md:hidden group-hover:transition-all opacity-0 group-hover:opacity-50">NSmanager</span>
             </a>
             {% block header_insert %}
             {% endblock header_insert %}
-            <div>
-                <form class=" text-black text-xs overflow-hidden rounded-md focus-within:outline outline-2 outline-gray-300 grid grid-cols-[1fr_auto]">
-                    <input id="key-field" size="32" type="password" class="font-mono focus:outline-none p-1" autocomplete="off">
-                    <button id="key-submit" type="button" class="row-span-2 py-1 px-2 text-lg rounded-r-md bg-green-600 text-white font-extrabold">
-                        ⎆
-                    </button>
-                    <p class="flex bg-white px-2 pb-1 justify-between select-none">
-                        <label for="key" class="font-bold">
-                            API key
-                        </label>
-                        <a target="_blank" href="https://dns.hetzner.com/settings/api-token" class="text-blue-700 hover:underline focus-within:underline">
-                            (get one here)
-                        </a>
+            <div class="flex gap-4 bg-slate-800 p-2">
+                <div id="key-missing" class="my-auto text-right ml-2 text-sm opacity-50">
+                    Missing API key!
+                </div>
+                <div id="key-status" class="my-auto text-right ml-2 group hidden">
+                    <p class="text-sm translate-y-2 group-hover:translate-y-0 transition">
+                        Authenticated
                     </p>
-                </form>
+                    <p id="key-hint" class="font-mono text-xs opacity-0 group-hover:opacity-50 -translate-y-5 group-hover:translate-y-0 transition">
+                        zpjSi3ALRo
+                    </p>
+                </div>
+                <div class="flex">
+                    <button id="key-set" class="bg-green-600 rounded-md p-2 flex gap-2 place-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                            <path fill-rule="evenodd" d="M3 4.25A2.25 2.25 0 0 1 5.25 2h5.5A2.25 2.25 0 0 1 13 4.25v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 0-.75-.75h-5.5a.75.75 0 0 0-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 0 0 .75-.75v-2a.75.75 0 0 1 1.5 0v2A2.25 2.25 0 0 1 10.75 18h-5.5A2.25 2.25 0 0 1 3 15.75V4.25Z" clip-rule="evenodd" />
+                            <path fill-rule="evenodd" d="M19 10a.75.75 0 0 0-.75-.75H8.704l1.048-.943a.75.75 0 1 0-1.004-1.114l-2.5 2.25a.75.75 0 0 0 0 1.114l2.5 2.25a.75.75 0 1 0 1.004-1.114l-1.048-.943h9.546A.75.75 0 0 0 19 10Z" clip-rule="evenodd" />
+                        </svg>
+                        <span class="text-sm">
+                            Add key
+                        </span>
+                    </button>
+                    <button id="key-clear" class="bg-red-600 rounded-l-md p-2 hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                            <path fill-rule="evenodd" d="M17 4.25A2.25 2.25 0 0 0 14.75 2h-5.5A2.25 2.25 0 0 0 7 4.25v2a.75.75 0 0 0 1.5 0v-2a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v11.5a.75.75 0 0 1-.75.75h-5.5a.75.75 0 0 1-.75-.75v-2a.75.75 0 0 0-1.5 0v2A2.25 2.25 0 0 0 9.25 18h5.5A2.25 2.25 0 0 0 17 15.75V4.25Z" clip-rule="evenodd" />
+                            <path fill-rule="evenodd" d="M14 10a.75.75 0 0 0-.75-.75H3.704l1.048-.943a.75.75 0 1 0-1.004-1.114l-2.5 2.25a.75.75 0 0 0 0 1.114l2.5 2.25a.75.75 0 1 0 1.004-1.114l-1.048-.943h9.546A.75.75 0 0 0 14 10Z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <button id="refresh" class="bg-blue-600 rounded-r-md p-2 hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                            <path fill-rule="evenodd" d="M15.312 11.424a5.5 5.5 0 0 1-9.201 2.466l-.312-.311h2.433a.75.75 0 0 0 0-1.5H3.989a.75.75 0 0 0-.75.75v4.242a.75.75 0 0 0 1.5 0v-2.43l.31.31a7 7 0 0 0 11.712-3.138.75.75 0 0 0-1.449-.39Zm1.23-3.723a.75.75 0 0 0 .219-.53V2.929a.75.75 0 0 0-1.5 0V5.36l-.31-.31A7 7 0 0 0 3.239 8.188a.75.75 0 1 0 1.448.389A5.5 5.5 0 0 1 13.89 6.11l.311.31h-2.432a.75.75 0 0 0 0 1.5h4.243a.75.75 0 0 0 .53-.219Z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </header>
 
         {% block content %}
         {% endblock content %}
     </body>
-    <script src="{{ url_for('static', filename='key.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='auth.js') }}" type="module" defer></script>
     {% block scripts %}
     {% endblock scripts %}
 </html>
