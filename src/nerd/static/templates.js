@@ -4,10 +4,10 @@ export function record_template(type, name, value, ttl) {
             <span>
                 ${type}
             </span>
-            <span>
+            <span class="font-mono">
                 ${name}
             </span>
-            <span>
+            <span class="font-mono">
                 ${value}
             </span>
             ${ ttl === undefined 
