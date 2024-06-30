@@ -1,6 +1,6 @@
 [project]
 name = "nerD"
-version = "1.0.0"
+version = "1.1.0"
 description = "nerD, the HetznerDNSmanager. A frontend for the Hetzner DNS API."
 authors = [
     { name = "thcrt", email = "110127860+thcrt@users.noreply.github.com" }
@@ -10,21 +10,15 @@ dependencies = [
     "waitress>=3.0.0",
 ]
 readme = "README.md"
-requires-python = ">= 3.8"
-
-[project.scripts]
-"nerd" = "nerd:__main__.main"
-
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires-python = ">= 3.12"
 
 [tool.rye]
 managed = true
+virtual = true
 dev-dependencies = []
 
-[tool.hatch.metadata]
-allow-direct-references = true
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/nerd"]
+[tool.rye.scripts]
+dev = "flask run --app nerd/app --debug"
+build-watch = "npx tailwindcss --output nerd/static/tailwind.css --watch"
+build = "npx tailwindcss --output nerd/static/tailwind.css"
+run = "python nerd/app.py"

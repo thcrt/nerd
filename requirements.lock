@@ -8,13 +8,11 @@
 #   with-sources: false
 #   generate-hashes: false
 
--e file:.
 blinker==1.8.2
     # via flask
 click==8.1.7
     # via flask
 flask==3.0.3
-    # via nerd
 itsdangerous==2.2.0
     # via flask
 jinja2==3.1.4
@@ -23,6 +21,5 @@ markupsafe==2.1.5
     # via jinja2
     # via werkzeug
 waitress==3.0.0
-    # via nerd
 werkzeug==3.0.3
     # via flask

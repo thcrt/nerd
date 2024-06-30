@@ -7,4 +7,4 @@ wheels/
 .venv
 node_modules
 
-src/nerd/static/tailwind.css
+nerd/static/tailwind.css

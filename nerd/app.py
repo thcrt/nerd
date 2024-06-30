@@ -1,4 +1,6 @@
+from waitress import serve
 import flask as f
+
 
 def create_app() -> f.app:
     app = f.Flask(__name__)
@@ -12,3 +14,8 @@ def create_app() -> f.app:
         return f.render_template("zone.jinja")
 
     return app
+
+
+if __name__ == "__main__":
+    app = create_app()
+    serve(app, host="0.0.0.0", port=5000) 

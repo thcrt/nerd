@@ -1,5 +1,5 @@
 module.exports = {
-  content: ["src/nerd/templates/**/*.jinja", "src/nerd/static/**/*.js"],
+  content: ["nerd/templates/**/*.jinja", "nerd/static/**/*.js"],
   theme: {
     extend: {},
   },
