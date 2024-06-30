@@ -1,6 +1,6 @@
 {% extends "_base.jinja" %}
 {% block content %}
-    <main class="px-5 py-5 bg-slate-50 gap-4 grid grid-cols-[auto_1fr] grid-rows-[auto_1fr] h-full overflow-hidden">
+    <main class="px-5 py-5 bg-slate-50 gap-4 max-sm:gap-2 grid grid-cols-[auto_1fr] grid-rows-[auto_1fr] h-full overflow-hidden">
         <div class="bg-slate-100 shadow-md shadow-slate-300 p-4 border-b-4 border-red-600 flex justify-between col-span-2">
             <div>
                 <h2 class="font-mono text-3xl" id="zone-name">
@@ -9,12 +9,12 @@
                     Zone name
                 </span>
             </div>
-            <span class="text-6xl block my-auto opacity-10 cursor-default select-none max-md:hidden">
+            <span class="text-6xl block my-auto opacity-10 cursor-default select-none max-sm:hidden">
                 Records
             </span>
         </div>
-        <div class="bg-slate-100 shadow-md shadow-slate-300 py-4 px-10 w-full max-w-80 max-md:max-w-full flex flex-col justify-between text-center">
-            <a href="/" class="p-2 rounded-md border outline-blue-600 transition
+        <div class="bg-slate-100 shadow-md shadow-slate-300 py-4 max-sm:py-2 px-10 w-full max-w-80 max-md:max-w-full flex flex-col max-sm:flex-row max-sm:col-span-2 justify-between max-sm:h-fit text-center">
+            <a href="/" class="p-2 max-sm:p-1 rounded-md border outline-blue-600 transition
                     border-blue-600 hover:border-white focus-within:border-white
                     hover:bg-slate-200 focus-within:bg-slate-200
                     text-blue-600
@@ -25,15 +25,15 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
                     <path fill-rule="evenodd" d="M7.793 2.232a.75.75 0 0 1-.025 1.06L3.622 7.25h10.003a5.375 5.375 0 0 1 0 10.75H10.75a.75.75 0 0 1 0-1.5h2.875a3.875 3.875 0 0 0 0-7.75H3.622l4.146 3.957a.75.75 0 0 1-1.036 1.085l-5.5-5.25a.75.75 0 0 1 0-1.085l5.5-5.25a.75.75 0 0 1 1.06.025Z" clip-rule="evenodd" />
                 </svg>
-                <p>
+                <p class="max-sm:hidden">
                     Back
                 </p>
             </a>
-            <div class="flex flex-col gap-4">
-                <div class="text-lg border-b border-b-slate-300 pb-2">
+            <div class="flex flex-col max-sm:flex-row gap-4">
+                <div class="text-lg border-b border-b-slate-300 pb-2 max-sm:hidden">
                     Manage zone
                 </div>
-                <button id="delete-button" type="button" class="p-2 rounded-md border outline-red-600 transition
+                <button id="delete-button" type="button" class="p-2 max-sm:p-1 rounded-md border outline-red-600 transition
                     border-red-600 hover:border-white focus-within:border-white
                     hover:bg-red-600 focus-within:bg-red-600
                     text-red-600 hover:text-white focus-within:text-white
@@ -44,11 +44,11 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
                         <path fill-rule="evenodd" d="M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.53l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.5.06l.3 7.5a.75.75 0 1 0 1.5-.06l-.3-7.5Zm4.34.06a.75.75 0 1 0-1.5-.06l-.3 7.5a.75.75 0 1 0 1.5.06l.3-7.5Z" clip-rule="evenodd" />
                     </svg>
-                    <p>
+                    <p class="max-sm:hidden">
                         Delete
                     </p>
                 </button>
-                <a id="hetzner-button" class="p-2 rounded-md border outline-blue-600 transition
+                <a id="hetzner-button" class="p-2 max-sm:p-1 rounded-md border outline-blue-600 transition
                     border-blue-600 hover:border-white focus-within:border-white
                     hover:bg-slate-200 focus-within:bg-slate-200
                     text-blue-600
@@ -60,14 +60,14 @@
                         <path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 0 0-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 0 0 .75-.75v-4a.75.75 0 0 1 1.5 0v4A2.25 2.25 0 0 1 12.75 17h-8.5A2.25 2.25 0 0 1 2 14.75v-8.5A2.25 2.25 0 0 1 4.25 4h5a.75.75 0 0 1 0 1.5h-5Z" clip-rule="evenodd" />
                         <path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 0 0 1.06.053L16.5 4.44v2.81a.75.75 0 0 0 1.5 0v-4.5a.75.75 0 0 0-.75-.75h-4.5a.75.75 0 0 0 0 1.5h2.553l-9.056 8.194a.75.75 0 0 0-.053 1.06Z" clip-rule="evenodd" />
                     </svg>
-                    <p>
+                    <p class="max-sm:hidden">
                         At Hetzner
                     </p>
                 </a>
             </div>
         </div>
-        <div class="bg-slate-100 shadow-md shadow-slate-300 w-full grid grid-cols-[auto_1fr_2fr_auto] place-content-start overflow-x-auto">
-            <div class="grid grid-cols-subgrid col-span-full gap-2 p-2 bg-red-600 font-bold text-white sticky top-0">
+        <div class="bg-slate-100 max-md:text-sm shadow-md max-sm:col-span-2 max-sm:mt-2 shadow-slate-300 w-full grid sm:grid-cols-[auto_1fr_2fr_auto] max-sm:grid-cols-[auto_1fr] place-content-start overflow-x-auto">
+            <div class="grid grid-cols-subgrid col-span-full gap-2 p-2 bg-red-600 font-bold text-white sticky top-0 max-sm:hidden">
                 <span>
                     Type
                 </span>
@@ -77,7 +77,7 @@
                 <span>
                     Value
                 </span>
-                <span class="text-right">
+                <span class="text-right max-md:hidden">
                     TTL
                 </span>
             </div>

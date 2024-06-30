@@ -1,18 +1,20 @@
 export function record_template(type, name, value, ttl) {
     return `
         <div class="grid grid-cols-subgrid col-span-full gap-2 p-2 border-b">
-            <span>
+            <span class="grid grid-cols-subgrid sm:col-span-2">
+                <span>
                 ${type}
-            </span>
-            <span class="font-mono">
+                </span>
+                <span class="font-mono break-all">
                 ${name}
+                </span>
             </span>
-            <span class="font-mono">
+            <span class="font-mono break-all">
                 ${value}
             </span>
             ${ ttl === undefined 
-                ? '<span class="text-right opacity-50">(zone default)</span>'
-                : '<span class="text-right">' + ttl + '</span>'
+                ? '<span class="text-right text-slate-400 max-md:hidden">(zone default)</span>'
+                : '<span class="text-right max-md:hidden">' + ttl + '</span>'
             }
         </div>
     `
