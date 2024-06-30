@@ -11,9 +11,15 @@ async function update_zones() {
     `;
 
     let zones = await request('/zones', 'zones')
-    for (let zone of zones) {
-        zone['records'] = await request(`/records?zone_id=${zone['id']}`, 'records')
+    let record_promises = []
+    for (let [i, zone] of zones.entries()) {
+        record_promises[i] = request(`/records?zone_id=${zone['id']}`, 'records');
     }
+    await Promise.all(record_promises).then(zone_records => {
+        for (let [i, records] of zone_records.entries()) {
+            zones[i]['records'] = records;
+        }
+    })
     
     zone_container.innerHTML = zones.map(zone => zone_template(zone['name'], zone['id'], zone['records'])).join('');
 }

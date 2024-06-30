@@ -11,8 +11,10 @@ async function show_zone() {
     records_container.innerHTML = '';
     zone_name_container.innerHTML = '';
 
-    let zone = await request(`/zones/${id}`, 'zone');
-    let records = await request(`/records?zone_id=${id}`, 'records');
+    let [zone, records] = await Promise.all([
+        request(`/zones/${id}`, 'zone'),
+        request(`/records?zone_id=${id}`, 'records')
+    ])
     
     records_container.innerHTML = records.map(record => record_template(record['type'], record['name'], record['value'], record['ttl'])).join('');
     zone_name_container.innerText = zone['name'];

@@ -9,12 +9,16 @@ function deauthenticate() {
 async function authenticate(key) {
     // Check validity by trying to make a request
     // If no key is given, don't bother checking, assume it fails
+    // We request primary servers, a very obscure feature, because Hetzner will give a very
+    // quick response. We don't care about the data. This is also why we check it's not a 
+    // 401. A 404 indicates that the request was fine but the user has no primary servers,
+    // whereas a 401 indicates a bad token.
     let valid = false;
     if (key) {
         valid = await fetch(new Request(
-            `https://dns.hetzner.com/api/v1/zones`, 
+            `https://dns.hetzner.com/api/v1/primary_servers`, 
             {headers: {'Auth-API-Token': key}}
-        )).then(res => res.ok);
+        )).then(res => res.status !== 401);
     }
 
     
