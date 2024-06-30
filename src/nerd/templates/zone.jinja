@@ -8,8 +8,7 @@
     <main class="px-5 py-5 bg-slate-50 flex flex-col h-full gap-4">
         <div class="bg-slate-100 shadow-md shadow-slate-300 p-4 border-b-4 border-red-600 col-span-2 flex justify-between h-fit">
             <div>
-                <h2 class="font-mono text-3xl">
-                    example.com
+                <h2 class="font-mono text-3xl" id="zone-name">
                 </h2>
                 <span class="uppercase font-light select-none">
                     Zone name
@@ -35,61 +34,7 @@
                         TTL
                     </span>
                 </div>
-                <div class="grid grid-cols-subgrid col-span-full gap-2 p-2 border-b">
-                    <span>
-                        A
-                    </span>
-                    <span>
-                        @
-                    </span>
-                    <span>
-                        123.456.78.90
-                    </span>
-                    <span class="text-right">
-                        3600
-                    </span>
-                </div>
-                <div class="grid grid-cols-subgrid col-span-full gap-2 p-2 border-b">
-                    <span>
-                        A
-                    </span>
-                    <span>
-                        www
-                    </span>
-                    <span>
-                        123.456.78.90
-                    </span>
-                    <span class="text-right">
-                        3600
-                    </span>
-                </div>
-                <div class="grid grid-cols-subgrid col-span-full gap-2 p-2 border-b">
-                    <span>
-                        A
-                    </span>
-                    <span>
-                        foo
-                    </span>
-                    <span>
-                        69.420.13.12
-                    </span>
-                    <span class="text-right">
-                        3600
-                    </span>
-                </div>
-                <div class="grid grid-cols-subgrid col-span-full gap-2 p-2 border-b">
-                    <span>
-                        A
-                    </span>
-                    <span>
-                        bar
-                    </span>
-                    <span>
-                        11.22.33.44
-                    </span>
-                    <span class="text-right">
-                        3600
-                    </span>
+                <div id="records" class="grid grid-cols-subgrid col-span-full">
                 </div>
             </div>
             <div class="bg-slate-100 shadow-md shadow-slate-300 p-4 w-full max-w-80 max-md:max-w-full flex flex-col gap-4">
@@ -116,3 +61,6 @@
         </div>
     </main>
 {% endblock content %}
+{% block scripts %}
+    <script src="{{ url_for('static', filename='zone.js') }}" defer></script>
+{% endblock scripts %}

@@ -7,8 +7,8 @@ def create_app() -> f.app:
     def index() -> str:
         return f.render_template("index.jinja")
     
-    @app.route("/record")
+    @app.route("/zone")
     def record() -> str:
-        return f.render_template("record.jinja")
+        return f.render_template("zone.jinja")
 
     return app

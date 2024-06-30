@@ -1,6 +1,6 @@
 let zone_container = document.getElementById("zones");
 
-function zone_template(name, records) {
+function zone_template(name, id, records) {
     let record_types = {
         "A": 0,
         "AAAA": 0,
@@ -16,7 +16,7 @@ function zone_template(name, records) {
         }
     }
     return `
-        <a href="/record" class="bg-slate-100 transition shadow-md shadow-slate-300 hover:shadow-slate-400 grid grid-cols-[1fr_auto] w-full max-w-sm">
+        <a href="/zone?id=${id}" class="bg-slate-100 transition shadow-md shadow-slate-300 hover:shadow-slate-400 grid grid-cols-[1fr_auto] w-full max-w-sm">
             <h2 class="text-xl bg-red-600 text-white font-mono p-4 col-span-full">
                 ${name}
             </h2>
@@ -44,25 +44,12 @@ function zone_template(name, records) {
     `;
 }
 
-function get_zones() {
-    return api_request("https://dns.hetzner.com/api/v1/zones").then(res => res['zones']);
-}
-
-function get_records(zone_id) {
-    return api_request(`https://dns.hetzner.com/api/v1/records?zone_id=${zone_id}`).then(res => res['records']);
-}
-
 async function update_zones() {
     let zones = await get_zones();
     for (let zone of zones) {
         zone['records'] = await get_records(zone['id']);
     }
-    zone_container.innerHTML = zones.map(zone => zone_template(zone['name'], zone['records'])).join('');
+    zone_container.innerHTML = zones.map(zone => zone_template(zone['name'], zone['id'], zone['records'])).join('');
 }
 
 update_zones();
-
-key_submit.addEventListener("click", () => {
-    localStorage.setItem("key", key_field.value);
-    update_zones();
-})
