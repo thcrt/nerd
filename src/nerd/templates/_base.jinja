@@ -22,8 +22,8 @@
             {% endblock header_insert %}
             <div>
                 <form class=" text-black text-xs overflow-hidden rounded-md focus-within:outline outline-2 outline-gray-300 grid grid-cols-[1fr_auto]">
-                    <input id="key" size="32" type="password" class="font-mono focus:outline-none p-1" autocomplete="off">
-                    <button type="button" class="row-span-2 py-1 px-2 text-lg rounded-r-md bg-green-600 text-white font-extrabold">
+                    <input id="key-field" size="32" type="password" class="font-mono focus:outline-none p-1" autocomplete="off">
+                    <button id="key-submit" type="button" class="row-span-2 py-1 px-2 text-lg rounded-r-md bg-green-600 text-white font-extrabold">
                         ⎆
                     </button>
                     <p class="flex bg-white px-2 pb-1 justify-between select-none">
@@ -41,4 +41,7 @@
         {% block content %}
         {% endblock content %}
     </body>
+    <script src="{{ url_for('static', filename='key.js') }}" defer></script>
+    {% block scripts %}
+    {% endblock scripts %}
 </html>
