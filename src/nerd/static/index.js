@@ -59,3 +59,10 @@ async function update_zones() {
     }
     zone_container.innerHTML = zones.map(zone => zone_template(zone['name'], zone['records'])).join('');
 }
+
+update_zones();
+
+key_submit.addEventListener("click", () => {
+    localStorage.setItem("key", key_field.value);
+    update_zones();
+})

@@ -1,10 +1,6 @@
 let key_submit = document.getElementById("key-submit");
 let key_field = document.getElementById("key-field");
 
-key_submit.addEventListener("click", () => {
-    localStorage.setItem("key", key_field.value);
-})
-
 key_field.value = localStorage.getItem("key");
 
 async function api_request(url, method="GET") {
